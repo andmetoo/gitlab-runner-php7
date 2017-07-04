@@ -81,12 +81,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /tmp
 
 # Codecept Support
-RUN curl -sSL http://codeception.com/codecept.phar && \
+RUN wget http://codeception.com/codecept.phar && \
     chmod +x codecept.phar && \
     mv codecept.phar /usr/local/bin/codecept
 
 # Deployer
-RUN curl -sSL http://deployer.org/deployer.phar -o deployer.phar && \
+RUN wget http://deployer.org/deployer.phar -o deployer.phar && \
     mv deployer.phar /usr/local/bin/dep && \
     chmod +x /usr/local/bin/dep
 
