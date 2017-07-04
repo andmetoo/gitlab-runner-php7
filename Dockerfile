@@ -100,7 +100,6 @@ RUN add-apt-repository -y ppa:ondrej/php && \
       php7.0-json \
       php7.0-ldap \
       php7.0-libsodium \
-      php7.0-litespeed \
       php7.0-mbstring \
       php7.0-mcrypt \
       php7.0-memcached \
@@ -109,21 +108,14 @@ RUN add-apt-repository -y ppa:ondrej/php && \
       php7.0-mysqlnd \
       php7.0-odbc \
       php7.0-opcache \
-      php7.0-openssl \
-      php7.0-pcntl \
+#      php7.0-openssl \
       php7.0-pdo \
-      php7.0-pdo_dblib \
-      php7.0-pdo_mysql \
-      php7.0-pdo_pgsql \
-      php7.0-pdo_sqlite \
-      php7.0-pear \
       php7.0-pgsql \
       php7.0-phar \
       php7.0-phpdbg \
       php7.0-posix \
       php7.0-pspell \
       php7.0-redis \
-      php7.0-session \
       php7.0-shmop \
       php7.0-snmp \
       php7.0-soap \
@@ -141,8 +133,7 @@ RUN add-apt-repository -y ppa:ondrej/php && \
       php7.0-xmlrpc \
       php7.0-xmlwriter \
       php7.0-xsl \
-      php7.0-zip \
-      php7.0-zlib 
+      php7.0-zip 
 
 # Time Zone
 RUN echo "date.timezone = UTC" > /etc/php/7.0/cli/conf.d/date_timezone.ini && \
