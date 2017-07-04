@@ -62,7 +62,12 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 RUN bash -c 'debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_password password $MYSQL_ROOT_PASS"' && \
 		bash -c 'debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_password_again password $MYSQL_ROOT_PASS"' && \
 		DEBIAN_FRONTEND=noninteractive apt-get update && \
-		DEBIAN_FRONTEND=noninteractive apt-get install -qqy mysql-server-5.7		
+		DEBIAN_FRONTEND=noninteractive apt-get install -qqy mysql-server-5.7	
+
+RUN rm -rf /etc/mysql/mysql.conf.d/disable_strict_mode.cnf && \
+    touch /etc/mysql/mysql.conf.d/disable_strict_mode.cnf && \
+    echo "[mysqld] \n sql_mode=IGNORE_SPACE,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" >> /etc/mysql/mysql.conf.d/disable_strict_mode.cnf
+
 # PHP Extensions
 RUN add-apt-repository -y ppa:ondrej/php && \
     DEBIAN_FRONTEND=noninteractive apt-get update && \
