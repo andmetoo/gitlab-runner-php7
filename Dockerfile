@@ -48,6 +48,10 @@ RUN mkdir -p /usr/local/openssl/include/openssl/ && \
     ln -s /usr/lib/x86_64-linux-gnu/libssl.a /usr/local/openssl/lib/libssl.a && \
     ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/local/openssl/lib/
 
+RUN mkdir /root/.ssh/
+
+RUN chmod 700 /root/.ssh/
+
 # NODE JS
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install nodejs -qq && \
