@@ -81,9 +81,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /tmp
 
 # Codecept Support
-wget http://codeception.com/codecept.phar
-chmod +x codecept.phar
-sudo mv codecept.phar /usr/local/bin/codecept
+RUN curl -L http://codeception.com/codecept.phar
+RUN chmod +x codecept.phar
+RUN mv codecept.phar /usr/local/bin/codecept
 
 # Deployer
 RUN curl -L http://deployer.org/deployer.phar -o deployer.phar && \
