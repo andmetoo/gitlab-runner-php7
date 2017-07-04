@@ -71,8 +71,78 @@ RUN rm -rf /etc/mysql/mysql.conf.d/disable_strict_mode.cnf && \
 # PHP Extensions
 RUN add-apt-repository -y ppa:ondrej/php && \
     DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -y -qq php-pear php7.0-dev php7.0-fpm php7.0-mcrypt php7.0-zip php7.0-xml php7.0-mbstring php7.0-curl php7.0-json php7.0-mysql php7.0-tokenizer php7.0-cli php7.0-imap && \
-    apt-get remove --purge php5 php5-common
+    apt-get install -y -qq php-pear \
+      php7.0-dev \
+      php7.0 \
+      php7.0-cli \
+      php7.0 \
+      php7.0-apcu \
+      php7.0-bcmath \
+      php7.0-bz2 \
+      php7.0-calendar \
+      php7.0-common \
+      php7.0-ctype \
+      php7.0-curl \
+      php7.0-dba \
+      php7.0-dom \
+      php7.0-embed \
+      php7.0-enchant \
+      php7.0-exif \
+      php7.0-fpm \
+      php7.0-ftp \
+      php7.0-gd \
+      php7.0-gettext \
+      php7.0-gmp \
+      php7.0-iconv \
+      php7.0-imagick \
+      php7.0-imap \
+      php7.0-intl \
+      php7.0-json \
+      php7.0-ldap \
+      php7.0-libsodium \
+      php7.0-litespeed \
+      php7.0-mbstring \
+      php7.0-mcrypt \
+      php7.0-memcached \
+      php7.0-mongodb \
+      php7.0-mysqli \
+      php7.0-mysqlnd \
+      php7.0-odbc \
+      php7.0-opcache \
+      php7.0-openssl \
+      php7.0-pcntl \
+      php7.0-pdo \
+      php7.0-pdo_dblib \
+      php7.0-pdo_mysql \
+      php7.0-pdo_pgsql \
+      php7.0-pdo_sqlite \
+      php7.0-pear \
+      php7.0-pgsql \
+      php7.0-phar \
+      php7.0-phpdbg \
+      php7.0-posix \
+      php7.0-pspell \
+      php7.0-redis \
+      php7.0-session \
+      php7.0-shmop \
+      php7.0-snmp \
+      php7.0-soap \
+      php7.0-sockets \
+      php7.0-sqlite3 \
+      php7.0-sysvmsg \
+      php7.0-sysvsem \
+      php7.0-sysvshm \
+      php7.0-tidy \
+      php7.0-tokenizer \
+      php7.0-wddx \
+      php7.0-xdebug \
+      php7.0-xml \
+      php7.0-xmlreader \
+      php7.0-xmlrpc \
+      php7.0-xmlwriter \
+      php7.0-xsl \
+      php7.0-zip \
+      php7.0-zlib 
 
 # Time Zone
 RUN echo "date.timezone = UTC" > /etc/php/7.0/cli/conf.d/date_timezone.ini && \
@@ -99,7 +169,7 @@ RUN wget http://deployer.org/deployer.phar -o deployer.phar && \
     mv deployer.phar /usr/local/bin/dep && \
     chmod +x /usr/local/bin/dep
 
-RUN service php7.0-fpm restart
+RUN service php7.0.0-fpm restart
 
 RUN apt-get clean -y && \
         apt-get autoremove -y && \
