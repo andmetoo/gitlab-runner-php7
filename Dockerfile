@@ -73,9 +73,8 @@ RUN add-apt-repository -y ppa:ondrej/php && \
     DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install -y -qq php-pear \
       php7.0-dev \
-      php7.0 \
       php7.0-cli \
-      php7.0 \
+      php7.0-fpm \
       php7.0-apcu \
       php7.0-bcmath \
       php7.0-bz2 \
@@ -88,7 +87,6 @@ RUN add-apt-repository -y ppa:ondrej/php && \
       php7.0-embed \
       php7.0-enchant \
       php7.0-exif \
-      php7.0-fpm \
       php7.0-ftp \
       php7.0-gd \
       php7.0-gettext \
@@ -159,8 +157,6 @@ RUN wget http://codeception.com/codecept.phar && \
 RUN wget http://deployer.org/deployer.phar -o deployer.phar && \
     mv deployer.phar /usr/local/bin/dep && \
     chmod +x /usr/local/bin/dep
-
-RUN service php7.0.0-fpm restart
 
 RUN apt-get clean -y && \
         apt-get autoremove -y && \
