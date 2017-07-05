@@ -69,7 +69,7 @@ RUN rm -rf /etc/mysql/mysql.conf.d/disable_strict_mode.cnf && \
     echo "[mysqld] \n sql_mode=IGNORE_SPACE,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" >> /etc/mysql/mysql.conf.d/disable_strict_mode.cnf
 
 #Rabbitmq
-RUN DEBIAN_FRONTEND=noninteractive apt-get install rabbitmq-server
+RUN DEBIAN_FRONTEND=noninteractive apt-get install rabbitmq-server  -y
 
 # PHP Extensions
 RUN add-apt-repository -y ppa:ondrej/php && \
