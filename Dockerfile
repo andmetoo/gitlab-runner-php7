@@ -82,6 +82,7 @@ RUN add-apt-repository -y ppa:ondrej/php && \
       php7.0-cli \
       php7.0-fpm \
       php7.0-apcu \
+      php-amqp \
       php7.0-bcmath \
       php7.0-bz2 \
       php7.0-calendar \
