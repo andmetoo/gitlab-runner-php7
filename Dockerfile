@@ -71,6 +71,9 @@ RUN rm -rf /etc/mysql/mysql.conf.d/disable_strict_mode.cnf && \
 #Rabbitmq
 RUN DEBIAN_FRONTEND=noninteractive apt-get install rabbitmq-server  -y
 
+#Memcached
+RUN DEBIAN_FRONTEND=noninteractive apt install memcached  -y
+
 # PHP Extensions
 RUN add-apt-repository -y ppa:ondrej/php && \
     DEBIAN_FRONTEND=noninteractive apt-get update && \
