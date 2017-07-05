@@ -106,6 +106,7 @@ RUN add-apt-repository -y ppa:ondrej/php && \
       php7.0-libsodium \
       php7.0-mbstring \
       php7.0-mcrypt \
+      php-memcache \
       php7.0-memcached \
       php7.0-mongodb \
       php7.0-mysqli \
