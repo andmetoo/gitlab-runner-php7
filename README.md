@@ -12,7 +12,7 @@
 - Node / NPM / Gulp 
 - Mysql 5.7
 
-### Sample `bitbucket-pipelines.yml`
+### Sample `bitbucket-pipelines.yml` with optional mysql as service
 
 ```YAML
 stages:
@@ -42,7 +42,7 @@ before_script:
 test:
   stage: test
   services:
-    - mysql:5.7
+    #- mysql:5.7
   image: andmetoo/gitlab-runner-php7
   script:
     - codecept run --coverage --coverage-text --coverage-html
@@ -51,4 +51,18 @@ test:
     - tests/_output/coverage/
     - tests/_output/coverage.txt
     expire_in: 2 week
+```
+```bash
+#!/usr/bin/env bash
+
+# Install dependencies only for Docker.
+[[ ! -e /.dockerinit ]] && exit 0
+set -xe
+
+# Install Composer and project dependencies.
+echo "start mysql"
+service mysql start
+echo "add user"
+mysql -h localhost --user=root --password=root -e "CREATE DATABASE test;CREATE USER 'test'@'%' IDENTIFIED BY 'test';GRANT ALL PRIVILEGES ON *.* TO 'test'@'%'; FLUSH PRIVILEGES;"
+# Copy over testing configuration.
 ```
