@@ -52,6 +52,8 @@ test:
     - tests/_output/coverage.txt
     expire_in: 2 week
 ```
+### Sample `gitlab-ci.sh` with optional mysql as service
+
 ```bash
 #!/usr/bin/env bash
 
