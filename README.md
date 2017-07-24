@@ -67,4 +67,9 @@ service mysql start
 echo "add user"
 mysql -h localhost --user=root --password=root -e "CREATE DATABASE test;CREATE USER 'test'@'%' IDENTIFIED BY 'test';GRANT ALL PRIVILEGES ON *.* TO 'test'@'%'; FLUSH PRIVILEGES;"
 # Copy over testing configuration.
+#start rabbit
+service rabbitmq-server start
+
+#start memcached
+service memcached start
 ```
