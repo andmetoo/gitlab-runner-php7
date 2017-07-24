@@ -15,13 +15,40 @@
 ### Sample `bitbucket-pipelines.yml`
 
 ```YAML
-image: andmetoo/gitlab-runner-php7
+stages:
+  - test
+
+variables:
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_USER: test
+  MYSQL_PASSWORD: test
+  MYSQL_DATABASE: test
+  DB_HOST: mysql
+
+# Speed up builds
+cache:
+  key: $CI_BUILD_REF_NAME
+  paths:
+    - vendor
+    - node_modules
+    - ~/.composer/cache/files
 
 before_script:
-# Install dependencies
-- bash ci/docker_install.sh > /dev/null
-
-test:app:
+    - sh .gitlab-ci.sh
+    - echo "$GITLAB_SSH_KEY" >>  ~/.ssh/id_rsa
+    - ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
+    - chmod 600  ~/.ssh/id_rsa
+    - composer install
+test:
+  stage: test
+  services:
+    - mysql:5.7
+  image: andmetoo/gitlab-runner-php7
   script:
-  - codecept.run
+    - codecept run --coverage --coverage-text --coverage-html
+  artifacts:
+    paths:
+    - tests/_output/coverage/
+    - tests/_output/coverage.txt
+    expire_in: 2 week
 ```
