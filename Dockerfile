@@ -104,7 +104,6 @@ RUN add-apt-repository -y ppa:ondrej/php && \
       php7.0-intl \
       php7.0-json \
       php7.0-ldap \
-      php7.0-libsodium \
       php7.0-mbstring \
       php7.0-mcrypt \
       php-memcache \
