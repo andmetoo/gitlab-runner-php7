@@ -53,9 +53,9 @@ RUN mkdir /root/.ssh/
 RUN chmod 700 /root/.ssh/
 
 # NODE JS
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
     apt-get install nodejs -qq && \
-    npm install -g gulp-cli 
+    npm install -g gulp-cli
 
 # MYSQL
 # /usr/bin/mysqld_safe
@@ -73,6 +73,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install rabbitmq-server  -y
 
 #Memcached
 RUN DEBIAN_FRONTEND=noninteractive apt install memcached  -y
+
+#Redis Server
+RUN DEBIAN_FRONTEND=noninteractive apt install redis-server  -y
 
 # PHP Extensions
 RUN add-apt-repository -y ppa:ondrej/php && \
