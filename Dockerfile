@@ -55,8 +55,9 @@ RUN chmod 700 /root/.ssh/
 # NODE JS
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
     apt-get install nodejs -qq && \
+    npm install npm@latest -g && \
     npm install -g gulp-cli
-
+    
 # MYSQL
 # /usr/bin/mysqld_safe
 RUN bash -c 'debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_password password $MYSQL_ROOT_PASS"' && \
@@ -164,9 +165,9 @@ RUN wget http://codeception.com/codecept.phar && \
     mv codecept.phar /usr/local/bin/codecept
 
 # Deployer
-RUN wget http://deployer.org/deployer.phar -o deployer.phar && \
-    mv deployer.phar /usr/local/bin/dep && \
-    chmod +x /usr/local/bin/dep
+#RUN wget http://deployer.org/deployer.phar -o deployer.phar && \
+#    mv deployer.phar /usr/local/bin/dep && \
+#    chmod +x /usr/local/bin/dep
 
 RUN apt-get clean -y && \
         apt-get autoremove -y && \
