@@ -12,7 +12,7 @@
 - Node / NPM / Gulp 
 - Mysql 5.7
 
-### Sample `.gitlab-ci.yml` with optional mysql as service
+### Sample `.gitlab-ci.yml`
 
 ```YAML
 stages:
@@ -44,7 +44,7 @@ test:
     - tests/_output/coverage.txt
     expire_in: 2 week
 ```
-### Sample `gitlab-ci.sh` with optional mysql as service
+### Sample `gitlab-ci.sh`
 
 ```bash
 #!/usr/bin/env bash
