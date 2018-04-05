@@ -12,18 +12,11 @@
 - Node / NPM / Gulp 
 - Mysql 5.7
 
-### Sample `bitbucket-pipelines.yml` with optional mysql as service
+### Sample `.gitlab-ci.yml` with optional mysql as service
 
 ```YAML
 stages:
   - test
-
-variables:
-  MYSQL_ROOT_PASSWORD: root
-  MYSQL_USER: test
-  MYSQL_PASSWORD: test
-  MYSQL_DATABASE: test
-  DB_HOST: mysql
 
 # Speed up builds
 cache:
@@ -42,7 +35,6 @@ before_script:
 test:
   stage: test
   services:
-    #- mysql:5.7
   image: andmetoo/gitlab-runner-php7
   script:
     - codecept run --coverage --coverage-text --coverage-html
