@@ -74,7 +74,7 @@ RUN rm -rf /etc/mysql/mysql.conf.d/disable_strict_mode.cnf && \
 RUN DEBIAN_FRONTEND=noninteractive apt-get install rabbitmq-server  -y
 
 # nginx
-RUN DEBIAN_FRONTEND=noninteractive apt-get install nginx-server  -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get install nginx  -y
 
 #Memcached
 RUN DEBIAN_FRONTEND=noninteractive apt install memcached  -y
