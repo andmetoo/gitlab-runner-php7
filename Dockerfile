@@ -33,6 +33,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     libcurl4-openssl-dev \
     libsasl2-dev \
     libcurl3 \
+    imagemagick \
     --no-install-recommends && rm -r /var/lib/apt/lists/* \
     && apt-get --purge autoremove -y
 
